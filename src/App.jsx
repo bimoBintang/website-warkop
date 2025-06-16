@@ -1,23 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import prisma from './lib/prisma';
 
 const App = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [cart, setCart] = useState([]);
-  const [activeCategory, setActiveCategory] = useState('coffee');
+  const [activeCategory, setActiveCategory] = useState([]);
   const [showCart, setShowCart] = useState(false);
+  const [categories, setCategories] = useState([]);
+  
 
   // Mock data untuk demo (nantinya dari API)
-  const mockMenuItems = prisma.menuItem.findMany();
+ 
 
   useEffect(() => {
-    setMenuItems(mockMenuItems);
+    Promise.all([
+      fetch('http://localhost:4000/api/menu-item').then(res => res.json()),
+      fetch('http://localhost:4000/api/category').then(res => res.json())
+    ])
+      .then(([menuData, categoryData]) => {
+        if (Array.isArray(menuData)) {
+          setMenuItems(menuData);
+          console.log('Menu items:', menuData);
+        } else {
+          console.error('Menu item API returned non-array:', menuData);
+        }
+  
+        if (Array.isArray(categoryData)) {
+          setCategories(categoryData);
+        } else {
+          console.error('Category API returned non-array:', categoryData);
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
   }, []);
+  
 
-  const categories = prisma.category.findMany();
-
-  const filteredItems = menuItems.filter(item => item.category === activeCategory);
+  const filteredItems = menuItems.filter(item => item.category !== activeCategory);
 
   const addToCart = (item) => {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
@@ -91,11 +111,13 @@ const App = () => {
         <div className="container">
           {/* Categories */}
           <div className="categories">
-            {categories.map(category => (
+            {Array.isArray(categories) && categories.map(category => (
               <button
                 key={category.id}
                 className={`category-btn ${activeCategory === category.id ? 'active' : ''}`}
-                onClick={() => setActiveCategory(category.id)}
+                onClick={() => {
+                  console.log('Klik kategori:', category.id);
+                  setActiveCategory(category.id)}}
               >
                 <span className="category-icon">{category.icon}</span>
                 {category.name}
@@ -105,7 +127,7 @@ const App = () => {
 
           {/* Menu Grid */}
           <div className="menu-grid">
-            {filteredItems.map(item => (
+            {Array.isArray(filteredItems) && filteredItems.map(item => (
               <div key={item.id} className="menu-card">
                 <img src={item.image} alt={item.name} className="menu-image" />
                 <div className="menu-content">
