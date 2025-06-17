@@ -17,8 +17,8 @@ const App = () => {
       try {
         setLoading(true);
         const [menuResponse, categoryResponse] = await Promise.all([
-          fetch('http://localhost:4000/api/menu-item'),
-          fetch('http://localhost:4000/api/category')
+          fetch('api/category'),
+          fetch('api/menu-item')
         ]);
 
         if (!menuResponse.ok || !categoryResponse.ok) {
