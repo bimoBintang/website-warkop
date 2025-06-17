@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  width: auto;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -660,8 +660,13 @@ body {
   }
 
   .hero {
+    width: 440px;
     height: 200px;
     padding: 1rem;
+  }
+
+  .header-content {
+    width: 24rem;
   }
 
   .categories {
@@ -670,8 +675,8 @@ body {
   }
 
   .category-btn {
-    padding: 0.625rem 1rem;
-    font-size: 0.85rem;
+    padding: 0.325rem 0.6rem;
+    font-size: 0.65rem;
     gap: 0.5rem;
   }
 
@@ -708,7 +713,7 @@ body {
 /* Desktop Enhancements */
 @media (min-width: 1024px) {
   .header-content {
-    max-width: 1200px;
+    width: 1200px;
     margin: 0 auto;
   }
 
@@ -739,8 +744,12 @@ body {
     gap: 3rem;
   }
 
+  .header-content {
+    width: 1700px;
+  }
+
   .container {
-    max-width: 1400px;
+    max-width: 1500px;
   }
 }
 

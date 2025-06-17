@@ -154,8 +154,8 @@ const App = () => {
           <div className="container">
             <div className="header-content">
               <div className="logo">
-                <h1>☕ Warkop Kita</h1>
-                <p>Kopi Asli Indonesia</p>
+                <h1>Warkop bang boy</h1>
+                <p>Asli Indonesia</p>
               </div>
             </div>
           </div>
@@ -182,8 +182,8 @@ const App = () => {
           <div className="container">
             <div className="header-content">
               <div className="logo">
-                <h1>☕ Warkop Kita</h1>
-                <p>Kopi Asli Indonesia</p>
+                <h1>Warkop bang boy</h1>
+                <p>Asli Indonesia</p>
               </div>
             </div>
           </div>
@@ -226,8 +226,8 @@ const App = () => {
         <div className="container">
           <div className="header-content">
             <div className="logo">
-              <h1>☕ Warkop Kita</h1>
-              <p>Kopi Asli Indonesia</p>
+              <h1>Warkop bang boy</h1>
+              <p>Asli Indonesia</p>
             </div>
             <button 
               className="cart-btn"
@@ -243,8 +243,8 @@ const App = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h2>Selamat Datang di Warkop Kita</h2>
-          <p>Nikmati kopi terbaik dengan suasana yang hangat dan bersahabat</p>
+          <h2>Selamat Datang di Warkop bang boy</h2>
+          <p>Nikmati warkop terbaik dengan suasana yang hangat dan bersahabat</p>
         </div>
       </section>
 
